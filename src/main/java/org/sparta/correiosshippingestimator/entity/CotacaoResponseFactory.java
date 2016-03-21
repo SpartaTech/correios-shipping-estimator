@@ -64,7 +64,7 @@ public class CotacaoResponseFactory {
 	 */
 	public static <T extends CotacaoResponse> T newErroCotacao (String codigoServico, String erro, String mensagemErro, Class<T> typeClass) throws RuntimeException {
 		try {
-			T obj = typeClass.getConstructor(String.class, String.class).newInstance(erro, mensagemErro);
+			T obj = typeClass.getDeclaredConstructor(String.class, String.class).newInstance(erro, mensagemErro);
 			obj.setCodigoServico(codigoServico);
 			return obj;
 		} catch (Exception e) { 
